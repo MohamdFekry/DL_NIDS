@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Network Intrusion Detection System</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="../home.html">Practical Machine Deep Learning</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="../home.html">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="mt-5">Network Intrusion Detection System</h1>
+        <ul class="list-unstyled">
+          <li>Omar Hatem</li>
+          <li>Mohamed Fekry</li>
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-12 text-left">
+        <h2 class="mt-5">Problem Statement</h2>
+		<p>
+      Over the past few years, many fields such as Networks, Communication, and Cyber Security have witnessed enormous advances that brought both prosperity and dangers to many important places like global businesses. 
+      One of these dangers, and perhaps the most conspicuous one, is network intrusions/attacks. 
+      A network intrusion can have various targets ranging from stealing crucial data that can be used in blackmailing individuals and entities to corrupting whole systems and forcing them to shut down entirely. 
+      That is why it is our aim to build a tool to help detect these intrusions in order to ultimately prevent them. A network intrusion detection system (NIDS) is a standard tool that detects malicious network actions to ensure that a network follows the information security triad abbreviated as CIA, which stands for confidentiality, integrity, and availability. However, since every day we are introduced to many new intrusions, 
+      most NIDSs encounter the challenge of detecting these new intrusions while at the same time decreasing the rate of false alarms. Classical NIDS used a signature-based approach where known malicious packets are stored and compared to the incoming packets. 
+      However, this system needs constant manual updating and also performs poorly against malicious attacks that are not too dissimilar from the malicious attacks in the signature list.  As a result, the world became in need of machine learning and deep learning models that can simulate NIDSs with high accuracy. In this project, we try to achieve this by reviewing the current state-of-the-art models found in the existing literature on that matter to improve upon them.
+
+		</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12 text-left">
+    <h2 class="mt-5">Dataset</h2>
+    
+    <p>
+      The dataset chosen was the UNSW-NB15 dataset. This dataset was collected by the Australian Center for Cyber Security. 
+      It provides about two million records divided into nine classes: Shellcode, Worms, Port Scans, Backdoor, Generic, Reconnaissance, Fuzzers, Exploits, and DoS. it is about 100Mb, and it can be downloaded from <a href="https://cloudstor.aarnet.edu.au/plus/index.php/s/2DhnLGDdEECo4ys"> here</a>.  
+      We chose the UNSW-NB15 as it is more recent and contains more records. Furthermore, it has a more diverse set of attacks such as Worms, Shellcode, and Reconnaissance for example. Thus, we have chosen UNSW-NB15 as our dataset for this project. Even though the dataset is only of size 100MB, it still has over two million records which is more than sufficient for the data to be effective in the training, validation, and testing phases.
+ 
+		</p>
+
+		<br/> <!-- Empty Line before the image -->
+	    <div class="img-container" align="center"> <!-- Block parent element -->
+      		<img src="resources/images/dataset.png" class="img-fluid text-center">
+    	</div>
+    	<br/> <!-- Empty Line after the image -->
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 text-left">
+        <h2 class="mt-5">Input/Output Examples</h2>
+
+        <p>
+			The UNSW-NB15 datastet conatians network traffic that has been summarized into 196 feautres including duration of signal, protocol, sent packets, and deletd packets. The label is the type of attack which are Normal, Fuzzers, Analysis, Backdoors, DoS, Exploits, Generic, Reconnaissance, Shellcode and Worms.
+		</p>
+
+		<br/> <!-- Empty Line before the image -->
+	    <div class="img-container" align="center"> <!-- Block parent element -->
+      		<img src="resources/images/dataset_examples.jpg" class="img-fluid text-center">
+    	</div>
+    	<br/> <!-- Empty Line after the image -->
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-12 text-left">
+        <h2 class="mt-5">State of the art</h2>
+
+        <p>
+          The main DL architecures found for this problem were RNNs, CNNs, DNNs, and CNN-BiLSTM.
+		</p>
+
+		<br/> <!-- Empty Line before the image -->
+	    <div class="img-container" align="center"> <!-- Block parent element -->
+      		<img src="resources/images/state_of_art_models.jpg" class="img-fluid text-center">
+    	</div>
+    	<br/> <!-- Empty Line after the image -->
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 text-left">
+        <h2 class="mt-5">Orignial Model from Literature</h2>
+
+        <p>
+			<ul>
+        <li>State of the art model.</li>
+        <li>Another hybrid model combining CNNs followed by RNNs.</li>
+        <li>Oversampling solved imbalances in classes.</li>
+        <li>Had best results among almost all published models before 2020 across all metrics.</li>
+        <li>Concluded its promising usage in real-time systems.</li>
+        <li>Results: 99.2% accuracy in the NSLKDD, 82% accuracy in the UNSW-NB15 (Multi-class).</li>
+        <li>Architecture(units): 1D CNN → BiLSTM Sigmoid(64+128) → Sigmoid\Softmax.</li>
+      </ul>
+		</p>
+
+		<br/> <!-- Empty Line before the image -->
+	    <div class="img-container" align="center"> <!-- Block parent element -->
+      		<img src="resources/images/model.png" class="img-fluid text-center">
+    	</div>
+    	<br/> <!-- Empty Line after the image -->
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 text-left">
+        <h2 class="mt-5">Proposed Updates</h2>
+
+        <p>
+			Add all the model updates you made here, need as many images as you wish
+		</p>
+
+		<h5 class="mt-5">Update #1: Replace LSTM units with GRU</h5>
+		<p>
+			our first idea was to use the Gate Recurrent Unit (GRU) instead of the Bi-LSTM for a more efficient process that can train more quickly. 
+      It could be the case that GRU will increase the accuracy of the model and that is something that should be considered. In the end, the accuracy increased slightly by about 2%.
+		</p>
+		<br/> <!-- Empty Line before the image -->
+	    <div class="img-container" align="center"> <!-- Block parent element -->
+      		<img src="resources/images/update1.png" class="img-fluid text-center">
+    	</div>
+    	<br/> <!-- Empty Line after the image -->
+
+		<h5 class="mt-5">Update #2: Converted 1D CNN to 2D</h5>
+		<p>
+			We found that Xian et al. (2019) experimented with using a 2D-CNN model and found more promising results especially in terms of false alarm rate, but not as high in terms of detection rate and accuracy. 
+      We propose using a 2D CNN layer instead of the 1D by converting the data into 2D grayscale image using PCA. 
+      This did not change the accuracy much and when tried to the PCA, it led to overfitting. 
+
+		</p>
+		<br/> <!-- Empty Line before the image -->
+	    <div class="img-container" align="center"> <!-- Block parent element -->
+      		<img src="resources/images/update2.png" class="img-fluid text-center">
+    	</div>
+    	<br/> <!-- Empty Line after the image -->
+      
+      <h5 class="mt-5">Update #3: Transformers and Ensemble Model</h5>
+		<p>
+			After the fact that the convresion did not work, we tried two more ideas. We replaced the GRU units with the transfomer attention model for better accuaracy,
+      we also used an ensemble model combining the 2D CNN model and our new transfomer network to extract more feautres from each model. 
+      The results again were not quite different and the accuarcy did not change that much. 
+      
+		</p>
+		<br/> <!-- Empty Line before the image -->
+    <div class="img-container" align="center"> <!-- Block parent element -->
+      <img src="resources/images/update3.jpg" class="img-fluid text-center">
+    </div>
+    <br/> <!-- Empty Line after the image -->
+    
+    
+    <h5 class="mt-5">Update #4: Oversampling and Variational Autoencoders</h5>
+		<p>
+      Our final two ideas were to tackle the issues inherent to the UNSW-NB15 dataset. There are some classes in the dataset That
+      have a very low number of examples, which were in particular the Worms and Analysis classes. 
+      To solve this issue, we used the method of oversampling for the Worms class and VAEs for the Analysis class.
+      
+		</p>
+		<br/> <!-- Empty Line before the image -->
+    <div class="img-container" align="center"> <!-- Block parent element -->
+      <img src="resources/images/update5.jpg" class="img-fluid text-center">
+    </div>
+    <br/> <!-- Empty Line after the image -->
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-lg-12 text-left">
+    <h2 class="mt-5">Results</h2>
+    <br />
+    <table>
+      <tr>
+        <td><strong>Update #1</strong></td>
+        <td><strong>Oversampling Method</strong></td>
+        <td><strong>VAEs</strong></td>
+      </tr>
+      <tr>
+        <td><ul>
+          <li>Loss: 0.3459</li>
+          <li>Training Accuracy: 86.09%</li>
+          <li>Validation Accuracy: 81.83%</li>
+        </ul></td>
+        <td><ul>
+          <li>Loss: 0.2486</li>
+          <li>Training Accuracy: 89.83%</li>
+          <li>Validation Accuracy: 82.16%</li>
+        </ul></td>
+        <td><ul>
+          <li>Loss: 0.3138 </li>
+          <li>Training Accuracy: 87.31%</li>
+          <li>Validation Accuracy: 86.51%</li>
+        </ul></td>
+      </tr>
+    </table>
+
+    <p>
+
+		</p>
+
+		<br/> <!-- Empty Line before the image -->
+	    <div class="img-container" align="center"> <!-- Block parent element -->
+      		<img src="resources/images/results.png" class="img-fluid text-center">
+    	</div>
+    	<br/> <!-- Empty Line after the image -->
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-12 text-left">
+        <h2 class="mt-5">Technical report</h2>
+
+        <p>
+			Here you will detail the details related to training, for example:
+		</p>
+
+	 	<ul>
+		  <li>Programming framework: Tensorflow Keras 2.11</li>
+		  <li>Training hardwar: Used both Google Colab and Kaggle simulatnouesly</li>
+		  <li>Training time: Average training time was about 90 minutes</li>
+		  <li>Number of epochs: 30</li>
+		  <li>Time per epoch: 90s-120s</li>
+		  <li>Any other important detail or difficulties</li>
+		</ul> 
+      </div>
+    </div>
+
+	<div class="row">
+	  <div class="col-lg-12 text-left">
+	    <h2 class="mt-5">Conclusion</h2>
+
+	    <p>
+			We mainly learned a lot about tackling a problem with DL. Since our early proposed updates did not generate that much resuts,
+      we had to again and again try to research more in the literature about new ideas and the common challenges present in this problem. 
+      We first only foucsed purely on the hyperparameters and the archtitecure, but we learned how to better mix and match the correct architecutres
+      and be cognizant about the nature of our dataset and how to know its limitations and hence the limitations of our model. Future work is to possibly
+      augment the UNSW-NB15 dataset to be less skewed which can hopefully help lead to higher accuracy. We also would like to create a complete api that takes the
+      literal network data and extracts the feautres given in the dataset in order to learn what potential issues become present in real-time deployment.
+		</p>
+
+	  </div>
+	</div>
+
+	<div class="row">
+	  <div class="col-lg-12 text-left">
+	    <h2 class="mt-5">References</h2>
+
+	    <p>
+	    	List all references here, the following are only examples
+	    </p>
+
+		<ol>
+		  <li><a href="http://www.google.com">Problem statement url</a></li>
+		  <li><a href="https://cloudstor.aarnet.edu.au/plus/index.php/s/2DhnLGDdEECo4ys">Dataset URL</a></li>
+		  <li><a href="https://dl.acm.org/doi/abs/10.1145/3430199.3430224?casa_token=vINpcf9ARjUAAAAA:mZHiM60vVWG27E7JHP2dStkbf20gRzC601qC_F5tY-4Ung9UX5XQ2qgmji8BBtQCdeAFUdndI94F">Model Reference URL</a></li>
+      <li>Ahmad, Z., Shahid Khan, A., Wai Shiang, C., Abdullah, J., & Ahmad, F. (2020). Network intrusion detection system: A systematic study of machine learning and Deep Learning Approaches. Transactions on Emerging Telecommunications Technologies, 32(1). https://doi.org/10.1002/ett.4150 </li>
+      <li>J. Sinha and M. Manollas, “Efficient deep CNN-BILSTM model for network intrusion detection,” Proceedings of the 2020 3rd International Conference on Artificial Intelligence and Pattern Recognition, 2020.</li>
+      <li>K. Jiang, W. Wang, A. Wang, and H. Wu, “Network intrusion detection combined hybrid sampling with deep hierarchical network,” IEEE Access, vol. 8, pp. 32464-32476, 2020.</li>
+      <li>S. Naseer, Y. Saleem, S. Khalid, M. K. Bashir, J. Han, M. M. Iqbal, and K. Han, “Enhanced network anomaly detection based on Deep Neural Networks,” IEEE Access, vol. 6, pp. 48231-48246, 2018.</li>
+      <li>Y. Xiao, C. Xing, T. Zhang, and Z. Zhao, “An intrusion detection model based on feature reduction and Convolutional Neural Networks,” IEEE Access, vol. 7, pp. 42210-42219, 2019. </li>
+    </ol> 
+	  </div>
+	</div>
+
+  </div>
+
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../vendor/jquery/jquery.slim.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
